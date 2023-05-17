@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="container bg-warning rounded">
+  <h1 class="text-danger">Hello this is bootstrap</h1>
+  <div class="row">
+    <div class="col-sm-8">first column</div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-6">inner column1</div>
+        <div class="col-sm-6">inner column2</div>
+      </div>
+    </div>
+  </div>
+  <!--2nd row-->
+  <div class="row">
+    <div class="col-sm-3">first column</div>
+    <div class="col-sm-5">second column</div>
+    <div class="col-sm-4">third column</div>
+  </div>
+  <!--3rd row-->
+  <div class="row">
+    <div class="col-sm-2">first column</div>
+    <div class="col-sm-3">second column</div>
+    <div class="col-sm-1">third column</div>
+    <div class="col-sm-5">forth column</div>
+    <div class="col-sm-1">fifth column</div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% block content %} 
+hello world my name is tay!!!
+<div>hello world my name is tay!!!</div>
+
+{% for food in foods %}
+<ul>
+  <li>{{food.name}}</li>
+</ul>
+{% endfor %}
+
+<img
+  src="https://riotfest.org/wp-content/uploads/2016/10/151_1stuffed_crust_pizza.jpg"
+/>
+
+{%endblock%}

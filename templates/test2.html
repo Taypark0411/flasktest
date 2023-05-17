@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{name}}</h1>
+{% if name == 'tay'%}
+<h2>{{message1}}</h2>
+{% else %}
+<h2>{{message2}}</h2>
+{% endif%}  {% endblock%}
