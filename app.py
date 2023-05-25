@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -60,6 +60,20 @@ def car():
     # return '<h1> This ' + car['color'] + ' ' + car['brand'] + ' ' + 'can drive up to' + ' ' + car['speed'] + ' ' + 'Miles per hour!!!' + '</h1>'
 
 
+@app.route("/handlemessage", methods=["post"])
+def handlemessage():
+    msg = request.form["message"]
+    msg1 = request.form["age"]
+    print(msg)
+    print(msg1)
+    return render_template('result.html', msg=msg, msg1=msg1)
+
+
 @app.route("/base")
 def base():
     return render_template('base.html')
+
+
+@app.route("/form")
+def form():
+    return render_template('form.html')

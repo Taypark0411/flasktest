@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+<h1>My Form</h1>
+<form action="/handlemessage" method="POST">
+  <label> message</label>
+  <input type="text" name="message" />
+  <label> age</label>
+  <input type="text" name="age" />
+  <input type="submit" value="start chat" />
+</form>
+
+{% endblock %}
