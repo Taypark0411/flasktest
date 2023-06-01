@@ -1,5 +1,6 @@
+import sqlite3
 from flask import Flask, render_template, request
-
+from dbconnection import createconnection
 
 app = Flask(__name__)
 string = '''
@@ -77,3 +78,28 @@ def base():
 @app.route("/form")
 def form():
     return render_template('form.html')
+
+
+def retrieve_books():
+    connection = createconnection()
+    cur = connection.cursor()
+    cur.execute("select * from books")
+    rows = cur.fetchall()
+    print(rows)
+    for row in rows:
+        print(row)
+
+
+def retrieve():
+    connection = createconnection()
+    cur = connection.cursor()
+    cur.execute("select * from author")
+    rows = cur.fetchall()
+    print(rows)
+    for row in rows:
+        print(row)
+
+
+if __name__ == "__main__":
+    retrieve()
+    # createconnection()
