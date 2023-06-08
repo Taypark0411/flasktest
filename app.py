@@ -90,16 +90,32 @@ def retrieve_books():
         print(row)
 
 
-def retrieve():
+@app.route("/viewauthors")
+def retrieveauthors():
     connection = createconnection()
     cur = connection.cursor()
     cur.execute("select * from author")
     rows = cur.fetchall()
     print(rows)
-    for row in rows:
-        print(row)
+    # for row in rows:
+    # print(row)
+    return render_template("viewauthors.html", authors=rows)
 
 
 if __name__ == "__main__":
-    retrieve()
+    retrieveauthors()
+
+
+@app.route("/viewbooks")
+def retrievebooks():
+    connection = createconnection()
+    cur = connection.cursor()
+    cur.execute(
+        "select b.id, b.title, b.main_character, a.name from books b inner join author a on b.author_id=a.id")
+    rows = cur.fetchall()
+    print(rows)
+    # for row in rows:
+    # print(row)
+    return render_template("viewbooks.html", books=rows)
+
     # createconnection()

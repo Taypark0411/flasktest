@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>GENDER</th>
+        <th>AGE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for author in authors %}
+      <tr>
+        <td>{{author[0]}}</td>
+
+        <td>{{author[1]}}</td>
+        <td>{{author[2]}}</td>
+        <td>{{author[3]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock%}
