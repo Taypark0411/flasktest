@@ -119,3 +119,13 @@ def retrievebooks():
     return render_template("viewbooks.html", books=rows)
 
     # createconnection()
+
+
+@app.route("/createauthor")
+def createauthors():
+    return render_template("createauthor.html")
+
+
+@app.route("/saveauthor", methods=["post"])
+def saveauthor():
+    return render_template("viewauthors.html")
