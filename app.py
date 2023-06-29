@@ -37,7 +37,7 @@ def testb():
 
 @app.route("/")
 def hello():
-    return string
+    return render_template("test.html")
 
 
 @app.route("/test4")
@@ -128,4 +128,54 @@ def createauthors():
 
 @app.route("/saveauthor", methods=["post"])
 def saveauthor():
-    return render_template("viewauthors.html")
+
+    # parse HTML element values
+    name = request.form["name"]
+    age = request.form["age"]
+    gender = request.form["gender"]
+    print(name, age, gender)
+    # Insert to DB
+    connection = createconnection()
+    cur = connection.cursor()
+    cur.execute(
+        "INSERT INTO Author ( name,gender,age ) VALUES ( ?, ?, ?  )", (name, gender, age))
+    connection.commit()
+    # Retrieve all Authors
+    cur = connection.cursor()
+    cur.execute("select * from author")
+    rows = cur.fetchall()
+    print(rows)
+    # for row in rows:
+    # print(row)
+    return render_template("viewauthors.html", authors=rows)
+    # Set additional values (authors) to render_template as a second parameter
+
+    # return render_template("viewauthors.html")
+
+
+@app.route("/createbook")
+def createbook():
+    return render_template("createbook.html")
+
+
+@app.route("/savebook", methods=["post"])
+def savebook():
+    title = request.form["title"]
+    main_character = request.form["main_character"]
+    authorid = request.form["authorid"]
+    print(title, main_character, authorid)
+    # Insert to DB
+    connection = createconnection()
+    cur = connection.cursor()
+    cur.execute(
+        # "INSERT INTO Author ( name,gender,age ) VALUES ( ?, ?, ?  )", (name, gender, age))
+        "INSERT INTO BOOKS (title, main_character, author_id) values(?, ?, ?)", (title, main_character, authorid))
+    connection.commit()
+    # Retrieve all Authors
+    cur = connection.cursor()
+    cur.execute("select b.id, b.title, b.main_character, a.name from books b inner join author a on b.author_id=a.id")
+    rows = cur.fetchall()
+    print(rows)
+    # for row in rows:
+    # print(row)
+    return render_template("viewbooks.html", books=rows)

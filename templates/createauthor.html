@@ -1,12 +1,20 @@
 {% extends "base.html" %} {% block content %}
 <div class="row"><h1>Create an author</h1></div>
-<div class="row">
-  <form action="/saveauthor" method="POST">
-    <label> message</label>
-    <input type="text" name="message" />
-    <label> age</label>
+
+<form action="/saveauthor" method="POST">
+  <div class="row">
+    <label> NAME</label>
+    <input type="text" name="name" />
+  </div>
+  <div class = "row">
+    <label> AGE</label>
     <input type="text" name="age" />
-    <input type="submit" value="start chat" />
-  </form>
-</div>
+  </div>
+  <div class="row">
+    <label> GENDER</label>
+    <input type="text" name="gender" />
+  </div>
+    <input type="submit" value="Save author">
+  </div>
+</form>
 {% endblock %}

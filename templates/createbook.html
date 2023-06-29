@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="row"><h1>Create a book</h1></div>
+
+<form action="/savebook" method="POST">
+  <div class="row">
+    <label> TITLE</label>
+    <input type="text" name="title" />
+  </div>
+  <div class = "row">
+    <label> MAIN_CHARACTER</label>
+    <input type="text" name="main_character" />
+  </div>
+  <div class="row">
+    <label> AUTHOR IDS</label>
+    <input type="text" name="authorid" />
+  </div>
+    <input type="submit" value="Save book">
+  </div>
+</form>
+{% endblock %}
